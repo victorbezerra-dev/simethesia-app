@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Image, SafeAreaView } from 'react-native';
 import LottieView from 'lottie-react-native';
+import { useNavigation } from '@react-navigation/native';
 
 export default function SplashScreen() {
+  const navigation = useNavigation();
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      (navigation as any).navigate('Home');
+    }, 7000); 
+
+    return () => clearTimeout(timer); 
+  }, []);
 
   return (
     <SafeAreaView className="flex-1 bg-[#02101F]">
