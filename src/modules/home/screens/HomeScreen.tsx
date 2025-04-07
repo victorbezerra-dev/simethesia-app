@@ -1,9 +1,13 @@
-import React, { useRef } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import React from 'react';
 import { Text, View, Image, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import Rive from 'rive-react-native';
 
 export default function HomeScreen() {
+
+  const navigation = useNavigation();
+
 
   return (
     <SafeAreaView edges={['top', 'bottom']} className="flex-1 bg-[#02101F]">
@@ -15,7 +19,6 @@ export default function HomeScreen() {
         />
         <Image
           className="absolute top-0 right-0 mr-[30px] mt-[15px] h-[28px] w-[28px]"
-
           source={require("@/assets/icons/icon-star.png")}
         />
 
@@ -46,6 +49,7 @@ export default function HomeScreen() {
               <View className="space-y-3 w-full mt-[10px]">
                 <TouchableOpacity className="bg-[#7C4DFF] flex-row py-3 rounded-xl justify-center items-center mb-[10px]"
                   activeOpacity={0.8}
+                  onPress={ () =>  (navigation as any).navigate("SimulationSettings")}
                 >
                   <Text className="text-white font-bold">🎮 Começar simulação</Text>
                   <Image
