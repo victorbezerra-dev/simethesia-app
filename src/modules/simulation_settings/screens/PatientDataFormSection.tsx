@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import { View, Text } from 'react-native';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
 import CustomTextInput from '@/shared/components/CustomTextInput';
 import CustomDropdown from '@/shared/components/CustomDropDown';
