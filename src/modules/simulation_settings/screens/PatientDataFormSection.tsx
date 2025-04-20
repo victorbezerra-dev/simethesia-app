@@ -1,34 +1,77 @@
-import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import React, { useEffect, useState } from 'react';
+import { View, Text } from 'react-native';
+import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import CustomTextInput from '@/shared/components/CustomTextInput';
+import CustomDropdown from '@/shared/components/CustomDropDown';
+import { Image } from 'react-native';
 
 type Props = {
   onDataChange: (data: any) => void;
 };
 
 export default function PatientDataFormSection({ onDataChange }: Props) {
-  React.useEffect(() => {
-    onDataChange({ dummy: 'settingsData' });
-  }, []);
+  const [gender, setGender] = useState<string | null>(null);
+  const [age, setAge] = useState('');
+  const [weight, setWeight] = useState('');
+  const [height, setHeight] = useState('');
+
+  useEffect(() => {
+    onDataChange({ gender, age, weight, height });
+  }, [gender, age, weight, height]);
 
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>
-        Formulario para Informar dados do paciente
-      </Text>
-    </View>
+
+    <KeyboardAwareScrollView
+      automaticallyAdjustContentInsets={false}
+      keyboardShouldPersistTaps='always'
+      scrollEventThrottle={10}
+      resetScrollToCoords={{ x: 0, y: 0 }}
+    >
+      <CustomDropdown
+        label="Sexo"
+        value={gender}
+        onChange={setGender}
+        options={['Masculino', 'Feminino']}
+        icon={<Image
+          source={require('@/assets/icons/icon-gender.png')}
+          style={{ width: 25, height: 18 }} />}
+      />
+
+      <CustomTextInput
+        label="Idade"
+        value={age}
+        unit='anos'
+        placeholder='Ex: 32 anos'
+        onChange={setAge}
+        keyboardType="numeric"
+        icon={<Image
+          source={require('@/assets/icons/icon_birthday-cake.png')}
+          style={{ width: 20, height: 20 }} />}
+      />
+
+      <CustomTextInput
+        label="Peso"
+        value={weight}
+        unit='kg'
+        placeholder='Ex: 52 kg'
+        onChange={setWeight}
+        keyboardType="numeric"
+        icon={<Image
+          source={require('@/assets/icons/icon_balance.png')}
+          style={{ width: 20, height: 20 }} />}
+      />
+
+      <CustomTextInput
+        label="Altura"
+        value={height}
+        unit='m'
+        placeholder='Ex: 1.52 m'
+        onChange={setHeight}
+        keyboardType="numeric"
+        icon={<Image
+          source={require('@/assets/icons/icon_straight-ruler.png')}
+          style={{ width: 20, height: 20 }} />}
+      />
+    </KeyboardAwareScrollView>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1, 
-    backgroundColor: 'lightgreen',
-    borderRadius: 10,
-    padding: 16,
-  },
-  title: {
-    fontWeight: 'bold',
-    fontSize: 18,
-    color: '#0a0a0a',
-  },
-});
