@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import {
+  Image,
   ScrollView,
   View,
   Text,
@@ -11,7 +12,9 @@ import {
 import CustomTabBar from '../components/CustomTabBar';
 import PatientDataFormSection from './PatientDataFormSection';
 import ChallengesSection from './ChallengesSection';
-import StartSimulationButton from '../components/StartSimulationButton';
+import CustomDialog from '@/shared/components/CustomDialog';
+import CustomPrimaryButton from '../../../shared/components/CustomPrimaryButton';
+import PatientCard from '../components/PatientSummaryCard';
 
 export default function SimulationSettingsHostScreen() {
   const scrollRef = useRef<ScrollView>(null);
@@ -24,9 +27,10 @@ export default function SimulationSettingsHostScreen() {
     weight: string;
     height: string;
   } | null>(null);
-  
+
   const [patientData, setPatientData] = useState(null);
-  
+
+  const [showDialog, setShowDialog] = useState(false)
 
   const [keyboardVisible, setKeyboardVisible] = useState(false);
   useEffect(() => {
@@ -78,11 +82,37 @@ export default function SimulationSettingsHostScreen() {
         </Animated.ScrollView>
       </View>
       {!keyboardVisible && (
-        <StartSimulationButton
+        <CustomPrimaryButton
+          label='INICIAR'
           disabled={!canSave}
-          onPress={() => console.log('Salvar!')}
+          onPress={() => setShowDialog(true)}
         />
       )}
+      <CustomDialog
+        visible={showDialog}
+        onClose={() => setShowDialog(false)}
+        title="Resumo da Simulação"
+        icon={
+          <Image
+            source={require('@/assets/icons/icon-rocket.png')}
+          />
+        }
+        children={
+          <PatientCard />
+        }
+        actions={
+          <CustomPrimaryButton
+            label='INICIAR SIMULAÇÃO'
+            marginTop={0}
+            marginBottom={15}
+            width={'100%'}
+            height={36}
+            fontSize={15}
+            disabled={!canSave}
+            onPress={() => console.log('Salvar!')}
+          />
+        }
+      />
     </View>
   );
 }
