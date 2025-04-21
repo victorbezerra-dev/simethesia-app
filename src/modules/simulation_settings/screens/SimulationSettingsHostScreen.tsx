@@ -28,7 +28,6 @@ export default function SimulationSettingsHostScreen() {
     height: string;
   } | null>(null);
 
-  const [patientData, setPatientData] = useState(null);
 
   const [showDialog, setShowDialog] = useState(false)
 
@@ -43,7 +42,7 @@ export default function SimulationSettingsHostScreen() {
   }, []);
 
 
-  const canSave = !!settingsData && !!patientData;
+  const canSave = !!settingsData
 
   const goToTab = (index: number) => {
     scrollRef.current?.scrollTo({ x: index * width, animated: true });
@@ -77,7 +76,7 @@ export default function SimulationSettingsHostScreen() {
             <PatientDataFormSection onDataChange={setSettingsData} />
           </View>
           <View style={{ width }} className="px-4">
-            <ChallengesSection onDataChange={setPatientData} />
+            <ChallengesSection />
           </View>
         </Animated.ScrollView>
       </View>
