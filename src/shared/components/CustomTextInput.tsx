@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react';
-import { TextInput } from 'react-native';
+import { TextInput, TextStyle, StyleSheet, StyleProp } from 'react-native';
 import { FormFieldWrapper } from './FormFieldWrapper';
 
 export const CustomTextInput = ({
@@ -10,6 +10,9 @@ export const CustomTextInput = ({
   onChange,
   keyboardType = 'default',
   unit,
+  inputStyle,
+  placeholderTextColor, 
+  labelStyle
 }: {
   label: string;
   icon?: React.ReactNode;
@@ -18,6 +21,9 @@ export const CustomTextInput = ({
   onChange: (text: string) => void;
   keyboardType?: 'default' | 'numeric';
   unit?: string;
+  inputStyle?: TextStyle;
+  placeholderTextColor?: string;
+  labelStyle?:  StyleProp<TextStyle>;
 }) => {
   const lastTextLength = useRef(0);
   const [cursorPos, setCursorPos] = useState<{ start: number; end: number }>();
@@ -59,24 +65,28 @@ export const CustomTextInput = ({
   };
 
   return (
-    <FormFieldWrapper icon={icon} label={label}>
+    <FormFieldWrapper icon={icon} label={label} labelStyle={labelStyle}>
       <TextInput
         value={displayValue}
         onChangeText={handleChangeText}
         placeholder={placeholder}
-        placeholderTextColor="#999"
+        placeholderTextColor={placeholderTextColor ?? '#999'}
         keyboardType={keyboardType}
         selection={forceCursor ? cursorPos : undefined}
-        style={{
-          textAlign: 'left',
-          width: '100%',
-          color: '#BFC4C9', 
-          minHeight: 26,
-        }}
+        style={[styles.input, inputStyle]}
         clearButtonMode="while-editing"
       />
     </FormFieldWrapper>
   );
 };
+
+const styles = StyleSheet.create({
+  input: {
+    textAlign: 'left',
+    width: '100%',
+    color: '#BFC4C9',
+    minHeight: 26,
+  },
+});
 
 export default CustomTextInput;
