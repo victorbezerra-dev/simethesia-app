@@ -9,11 +9,12 @@ import DraggableFlatList, { RenderItem } from 'react-native-draggable-flatlist';
 import { Challenge } from '@/shared/models/Challenge';
 import { useChallengeStore } from '../stores/useChallengeStore';
 import ChallengeCard from '../components/ChallengeCard';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ChallengesSection() {
+  const navigation = useNavigation();
   const challenges = useChallengeStore(state => state.challenges);
   const setReordered = useChallengeStore(state => state.setReordered);
-  const addChallenge = useChallengeStore(state => state.addChallenge);
 
   const renderItem: RenderItem<Challenge> = useCallback(
     ({ item, drag, isActive }) => (
@@ -33,7 +34,9 @@ export default function ChallengesSection() {
         ListFooterComponent={() => (
           <TouchableOpacity
             style={styles.addButton}
-            onPress={() => { }}
+            onPress={() => {
+              (navigation as any).navigate("AddNewChallenge")
+            }}
           >
             <Text style={styles.addButtonText}>+ Novo Desafio</Text>
           </TouchableOpacity>
