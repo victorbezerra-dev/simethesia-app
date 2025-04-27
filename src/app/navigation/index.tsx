@@ -13,6 +13,7 @@ export default function RootNavigator() {
     <Stack.Navigator initialRouteName="Splash"
       screenOptions={
         {
+          contentStyle: { backgroundColor: '#02101F' },
           headerTitle: () => null,
           headerStyle: {
             backgroundColor: '#02101F',
