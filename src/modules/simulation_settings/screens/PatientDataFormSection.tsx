@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
+import { KeyboardAwareFlatList } from 'react-native-keyboard-aware-scroll-view';
 import CustomTextInput from '@/shared/components/CustomTextInput';
-import CustomDropdown from '@/shared/components/CustomDropDown';
-import { Image } from 'react-native';
+import { CustomDropdown } from "@/shared/components/CustomDropDown";
+import { Image, View } from 'react-native';
 
 type Props = {
   onDataChange: (data: any) => void;
@@ -19,58 +19,70 @@ export default function PatientDataFormSection({ onDataChange }: Props) {
   }, [gender, age, weight, height]);
 
   return (
+    <KeyboardAwareFlatList
+      data={[{}]} 
+      keyExtractor={(_, index) => String(index)} 
+      renderItem={() => (
+        <View style={{ padding: 1 }}> 
+          <CustomDropdown
+            label="Sexo"
+            value={gender}
+            onChange={setGender}
+            options={[
+              { label: 'Masculino', value: 'Masculino' },
+              { label: 'Feminino', value: 'Feminino' },
+            ]}
+            icon={<Image
+              source={require('@/assets/icons/icon-gender.png')}
+              style={{ width: 25, height: 18 }}
+            />}
+          />
 
-    <KeyboardAwareScrollView
+          <CustomTextInput
+            label="Idade"
+            value={age}
+            unit="anos"
+            placeholder="Ex: 32 anos"
+            onChange={setAge}
+            keyboardType="numeric"
+            icon={<Image
+              source={require('@/assets/icons/icon_birthday-cake.png')}
+              style={{ width: 20, height: 20 }}
+            />}
+          />
+
+          <CustomTextInput
+            label="Peso"
+            value={weight}
+            unit="kg"
+            placeholder="Ex: 52 kg"
+            onChange={setWeight}
+            keyboardType="numeric"
+            icon={<Image
+              source={require('@/assets/icons/icon_balance.png')}
+              style={{ width: 20, height: 20 }}
+            />}
+          />
+
+          <CustomTextInput
+            label="Altura"
+            value={height}
+            unit="m"
+            placeholder="Ex: 1.52 m"
+            onChange={setHeight}
+            keyboardType="numeric"
+            icon={<Image
+              source={require('@/assets/icons/icon_straight-ruler.png')}
+              style={{ width: 20, height: 20 }}
+            />}
+          />
+        </View>
+      )}
       automaticallyAdjustContentInsets={false}
-      keyboardShouldPersistTaps='always'
+      keyboardShouldPersistTaps="always"
       scrollEventThrottle={10}
       resetScrollToCoords={{ x: 0, y: 0 }}
-    >
-      <CustomDropdown
-        label="Sexo"
-        value={gender}
-        onChange={setGender}
-        options={['Masculino', 'Feminino']}
-        icon={<Image
-          source={require('@/assets/icons/icon-gender.png')}
-          style={{ width: 25, height: 18 }} />}
-      />
-
-      <CustomTextInput
-        label="Idade"
-        value={age}
-        unit='anos'
-        placeholder='Ex: 32 anos'
-        onChange={setAge}
-        keyboardType="numeric"
-        icon={<Image
-          source={require('@/assets/icons/icon_birthday-cake.png')}
-          style={{ width: 20, height: 20 }} />}
-      />
-
-      <CustomTextInput
-        label="Peso"
-        value={weight}
-        unit='kg'
-        placeholder='Ex: 52 kg'
-        onChange={setWeight}
-        keyboardType="numeric"
-        icon={<Image
-          source={require('@/assets/icons/icon_balance.png')}
-          style={{ width: 20, height: 20 }} />}
-      />
-
-      <CustomTextInput
-        label="Altura"
-        value={height}
-        unit='m'
-        placeholder='Ex: 1.52 m'
-        onChange={setHeight}
-        keyboardType="numeric"
-        icon={<Image
-          source={require('@/assets/icons/icon_straight-ruler.png')}
-          style={{ width: 20, height: 20 }} />}
-      />
-    </KeyboardAwareScrollView>
+      showsVerticalScrollIndicator={false}
+    />
   );
 }
