@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view';
-import { View, Image, LogBox } from 'react-native';
+import {  Image, LogBox } from 'react-native';
 import { CustomDropdown } from "@/shared/components/CustomDropDown";
 import { CustomTextInput } from "@/shared/components/CustomTextInput";
 
