@@ -60,17 +60,11 @@ const CustomDialog: React.FC<CustomDialogProps> = ({
                       />
                     </Svg>
                   </View>
-
                   <View style={styles.content}>
                     {title && <Text style={styles.title}>{title}</Text>}
                     {children ?? <View style={styles.emptySpace} />}
-
                     <View style={styles.actions}>
-                      {actions ?? (
-                        <TouchableOpacity onPress={onClose} style={styles.defaultButton}>
-                          <Text style={styles.defaultButtonText}>Fechar</Text>
-                        </TouchableOpacity>
-                      )}
+                      {actions}
                     </View>
                   </View>
                 </View>
@@ -135,7 +129,7 @@ const styles = StyleSheet.create({
   title: {
     fontSize: 18,
     fontWeight: 'bold',
-    color: '#093361',
+    color: '#ffff',
     marginBottom: 38,
     zIndex: 5,
   },
