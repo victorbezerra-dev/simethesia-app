@@ -11,13 +11,7 @@ type ChallengeStore = {
 };
 
 export const useChallengeStore = create<ChallengeStore>((set) => ({
-    challenges: [
-        Challenge.create(effectOptions[0], 30),
-        Challenge.create(effectOptions[1], 45),
-        Challenge.create(effectOptions[2], 45),
-        Challenge.create(effectOptions[3], 60),
-        Challenge.create(effectOptions[4], 60),
-    ],
+    challenges: [],
     setReordered: (list) =>
         set(() => ({
             challenges: list,
