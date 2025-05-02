@@ -4,11 +4,10 @@ import { EffectOption, effectOptions } from '@/shared/models/EffectOption';
 
 type ChallengeStore = {
     challenges: Challenge[];
-    setReordered: (list: Challenge[]) => void; 
+    setReordered: (list: Challenge[]) => void;
     addChallenge: (effect: EffectOption, durationInSeconds: number) => void;
     removeChallenge: (id: string) => void;
     clearChallenges: () => void;
-    
 };
 
 export const useChallengeStore = create<ChallengeStore>((set) => ({
@@ -21,7 +20,7 @@ export const useChallengeStore = create<ChallengeStore>((set) => ({
     ],
     setReordered: (list) =>
         set(() => ({
-          challenges: list,
+            challenges: list,
         })),
     addChallenge: (effect, durationInSeconds) =>
         set((state) => ({
@@ -30,9 +29,9 @@ export const useChallengeStore = create<ChallengeStore>((set) => ({
                 Challenge.create(effect, durationInSeconds),
             ],
         })),
-    removeChallenge: (id) =>
-        set((state) => ({
-            challenges: state.challenges.filter((c) => c.id !== id),
+    removeChallenge: (id: string) =>
+        set(state => ({
+            challenges: state.challenges.filter(ch => ch.id !== id),
         })),
     clearChallenges: () => set({ challenges: [] }),
 }));
