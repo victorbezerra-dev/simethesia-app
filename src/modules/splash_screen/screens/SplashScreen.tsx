@@ -26,17 +26,13 @@ export default function SplashScreen() {
 
         <Image
           source={require('@/assets/images/simethesia-logo.png')}
-          className="absolute left-1/2 top-1/2 translate-y-[-110%] -translate-x-1/2 z-10 w-[200px] h-[200px]"
+          className="absolute left-1/2 top-1/2 translate-y-[-80%] -translate-x-1/2 z-10 w-[250px] h-[250px]"
           resizeMode="contain"
         />
+        <Text className="text-[22px] text-[#C9DBFF] text-center font-[Poppins_400Regular] font-bold mt-28">
+          Aprenda controle na veia.{"\n"}Literalmente. </Text>
 
-        <View className="absolute left-1/2 top-1/2 translate-y-[30%] -translate-x-1/2 z-20 items-center">
-          <Text className="text-[#C9DBFF] text-center text-[40px] font-bold">
-            Simethesia
-          </Text>
-          <Text className="text-[20px] text-[#7C869A] text-center font-[Poppins_400Regular] mt-2">
-            Aprenda controle na veia.{"\n"}Literalmente. </Text>
-        </View>
+     
         <View className="absolute bottom-0">
           <LottieView
             source={require('@/assets/animations/loading.json')}
