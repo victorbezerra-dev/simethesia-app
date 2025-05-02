@@ -3,9 +3,18 @@ import { View, Text, StyleSheet } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomTextInput from "@/shared/components/CustomTextInput";
 
-const PatientSummaryCard  = () => {
-    const [totalTime, setTotalTime] = useState('');
+type PatientSummaryCardProps = {
+    totalSimulationTime: string;
+    errorMessage: string | undefined;
+    onChangeTotalSimulationTime: (value: string) => void;
+};
 
+
+const PatientSummaryCard = ({
+  totalSimulationTime,
+  errorMessage=undefined,
+  onChangeTotalSimulationTime
+}: PatientSummaryCardProps) => {
     return (
         <View style={styles.card}>
             <Text style={styles.label}>
@@ -17,10 +26,11 @@ const PatientSummaryCard  = () => {
 
             <CustomTextInput
                 label="Tempo Total"
-                value={totalTime}
+                value={totalSimulationTime}
+                errorMessage={errorMessage}
                 unit="segundos"
                 placeholder="Ex: 32 segundos"
-                onChange={setTotalTime}
+                onChange={onChangeTotalSimulationTime}
                 keyboardType="numeric"
                 labelStyle={{
                     color: '#093361'
@@ -69,10 +79,6 @@ const styles = StyleSheet.create({
         fontWeight: 'bold',
         marginBottom: 4,
     },
-    divider: {
-        height: 1,
-        backgroundColor: '#ccc',
-        width: '100%',
-    },
+
 });
 export default PatientSummaryCard 
