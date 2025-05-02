@@ -55,8 +55,8 @@ export default function SimulationSettingsHostScreen() {
     };
   }, []);
   const canSave = useMemo(() => {
-    return !!settingsData && !!challenges.length;
-  }, [settingsData, challenges]);
+    return !!settingsData;
+  }, [settingsData]);
 
   useFocusEffect(
     useCallback(() => {
