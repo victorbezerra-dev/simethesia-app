@@ -137,7 +137,7 @@ export default function SimulationSettingsHostScreen() {
       (navigation as any).navigate("SimulationScreen");
     } catch (error) {
       console.error('Falha ao iniciar a simulação:', error);
-      Alert.alert('Erro', 'Não foi possível iniciar a simulação.');
+      Alert.alert('Erro', 'Não foi possível iniciar a simulação.\nVerifique as permissões ou a conexão Bluetooth com o Desktop.');
       setIsLoading(false);
     }
   };
