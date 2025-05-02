@@ -49,7 +49,7 @@ export default function HomeScreen() {
               <View className="space-y-3 w-full mt-[10px]">
                 <TouchableOpacity className="bg-[#7C4DFF] flex-row py-3 rounded-xl justify-center items-center mb-[10px]"
                   activeOpacity={0.8}
-                  onPress={ () =>  (navigation as any).navigate("SimulationSettings")}
+                  onPress={() => (navigation as any).navigate("SimulationSettings")}
                 >
                   <Text className="text-white font-bold">🎮 Começar simulação</Text>
                   <Image
@@ -57,6 +57,7 @@ export default function HomeScreen() {
                   />
                 </TouchableOpacity>
                 <TouchableOpacity className="bg-[#EDE7F6] flex-row items-center justify-center space-x-2 border border-blue-500 px-4 py-3 rounded-xl"
+                  onPress={() => (navigation as any).navigate("AboutScreen")}
                   activeOpacity={0.5}
                   style={{
                     borderColor: '#7C4DFF',
