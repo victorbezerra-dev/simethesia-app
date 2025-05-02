@@ -31,7 +31,6 @@ export default function SimulationSettingsHostScreen() {
   const scrollX = useRef(new Animated.Value(0)).current;
   const [simulationTimeError, setSimulationTimeError] = useState('');
 
-
   const [settingsData, setSettingsData] = useState<{
     gender: Gender | null;
     age: string;
@@ -46,6 +45,7 @@ export default function SimulationSettingsHostScreen() {
 
   const challenges = useChallengeStore(state => state.challenges);
   const dispatch = useDispatch();
+
   useEffect(() => {
     const show = Keyboard.addListener('keyboardDidShow', () => setKeyboardVisible(true));
     const hide = Keyboard.addListener('keyboardDidHide', () => setKeyboardVisible(false));
@@ -54,8 +54,9 @@ export default function SimulationSettingsHostScreen() {
       hide.remove();
     };
   }, []);
+
   const canSave = useMemo(() => {
-    return !!settingsData;
+    return validateSettingsData(settingsData);
   }, [settingsData]);
 
   useFocusEffect(
@@ -65,19 +66,38 @@ export default function SimulationSettingsHostScreen() {
     }, [])
   );
 
-  function validateSimulationTime(): Boolean {
+  function validateSettingsData(data: typeof settingsData): boolean {
+    if (!data) {
+      setIsLoading(false);
+      return false;
+
+    }
+
+    const { gender, age, weight, height } = data;
+
+    const isValidGender = gender !== null;
+    const isValidAge = !!age && !isNaN(Number(age)) && Number(age) > 0;
+    const isValidWeight = !!weight && !isNaN(Number(weight)) && Number(weight) > 0;
+    const isValidHeight = !!height && !isNaN(Number(height)) && Number(height) > 0;
+
+    if (isValidGender && isValidAge && isValidWeight && isValidHeight) return true
+    setIsLoading(false);
+    return false;
+  }
+
+
+  function validateSimulationTime(): boolean {
     const parsed = parseFloat(totalSimulationTime);
     if (!totalSimulationTime || isNaN(parsed) || parsed <= 0) {
       setSimulationTimeError('Informe um tempo válido');
-      setIsLoading(false)
-      return false
+      setIsLoading(false);
+      return false;
     } else {
       setSimulationTimeError('');
-      return true
+      return true;
     }
   }
 
-  
   const goToTab = (index: number) => {
     scrollRef.current?.scrollTo({ x: index * width, animated: true });
   };
@@ -85,8 +105,15 @@ export default function SimulationSettingsHostScreen() {
   const handleStartSimulation = async () => {
     try {
       setIsLoading(true);
-      const isValid = validateSimulationTime()
-      if(!isValid) return
+
+      const isValidTime = validateSimulationTime();
+      if (!isValidTime) return;
+
+      const isValidSettingsForm = validateSettingsData(settingsData);
+
+      if (!isValidSettingsForm) return;
+
+
       await requestBlePermissions();
       await bluetoothService.connectToFirstDevice();
 
@@ -172,7 +199,7 @@ export default function SimulationSettingsHostScreen() {
         actions={
           <CustomPrimaryButton
             label="INICIAR SIMULAÇÃO"
-            loading={isLoading} 
+            loading={isLoading}
             disabled={!!simulationTimeError || isLoading}
             marginTop={0}
             marginBottom={15}
