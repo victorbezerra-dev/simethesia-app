@@ -17,6 +17,7 @@ type FormFieldWrapperProps = {
   textContainerStyle?: StyleProp<ViewStyle>;
   labelStyle?: StyleProp<TextStyle>;
   inputContainerStyle?: StyleProp<ViewStyle>;
+  errorMessage?: string;
 };
 
 export const FormFieldWrapper: React.FC<FormFieldWrapperProps> = ({
@@ -28,7 +29,10 @@ export const FormFieldWrapper: React.FC<FormFieldWrapperProps> = ({
   textContainerStyle,
   labelStyle,
   inputContainerStyle,
+  errorMessage
 }) => {
+  const hasError = !!errorMessage;
+
   return (
     <View style={[styles.container, containerStyle]}>
       <View style={[styles.iconContainer, iconContainerStyle]}>{icon}</View>
@@ -36,6 +40,18 @@ export const FormFieldWrapper: React.FC<FormFieldWrapperProps> = ({
         <Text style={[styles.label, labelStyle]}>{label}</Text>
         <View style={[styles.inputContainer, inputContainerStyle]}>
           {children}
+          <View style={{
+            height: 1,
+            width: '100%',
+            marginTop: 8,
+            borderBottomWidth: 1,
+            borderColor: '#ddd',
+          }}></View>
+          {
+            hasError && (
+              <Text style={styles.errorText}>{errorMessage}</Text>
+            )
+          }
         </View>
       </View>
     </View>
@@ -48,6 +64,7 @@ const styles = StyleSheet.create<{
   textContainer: ViewStyle;
   label: TextStyle;
   inputContainer: ViewStyle;
+  errorText: TextStyle;
 }>({
   container: {
     flexDirection: 'row',
@@ -61,8 +78,6 @@ const styles = StyleSheet.create<{
   textContainer: {
     flex: 1,
     marginLeft: 0,
-    borderBottomWidth: 1,
-    borderColor: '#ddd',
   },
   label: {
     fontWeight: 'bold',
@@ -74,6 +89,12 @@ const styles = StyleSheet.create<{
     marginTop: 5,
     marginBottom: 4,
     alignItems: 'flex-start',
+  },
+  errorText: {
+    marginTop: 4,
+    color: '#FF4C4C',
+    fontSize: 12,
+    fontWeight: '500',
   },
 });
 
