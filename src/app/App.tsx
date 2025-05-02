@@ -1,14 +1,18 @@
 import * as React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
-import { GestureHandlerRootView } from 'react-native-gesture-handler'; 
+import { Provider } from 'react-redux';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
+import { store } from '@/shared/stores/stores';
 import "../styles/global.css";
 import RootNavigator from './navigation';
 
 export default function App() {
   return (
-    <GestureHandlerRootView style={{flex: 1}}>
+    <GestureHandlerRootView style={{ flex: 1 }}>
       <NavigationContainer>
-        <RootNavigator />
+        <Provider store={store}>
+          <RootNavigator />
+        </Provider>
       </NavigationContainer>
     </GestureHandlerRootView>
   );
