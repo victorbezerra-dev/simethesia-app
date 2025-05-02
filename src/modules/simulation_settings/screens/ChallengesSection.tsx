@@ -29,7 +29,7 @@ export default function ChallengesSection() {
     ),
     []
   );
-  
+
   return (
     <View style={styles.container}>
       <DraggableFlatList<Challenge>
@@ -38,6 +38,11 @@ export default function ChallengesSection() {
         renderItem={renderItem}
         onDragEnd={({ data }) => setReordered(data)}
         contentContainerStyle={styles.listContent}
+        ListEmptyComponent={() => (
+          <View className=' justify-center'>
+            <Text className='text-white text-center p-4'>Nenhum desafio ainda! Adicione eventos para explorar o comportamento do seu algoritmo diante de situações clínicas simuladas.</Text>
+          </View>
+        )}
         ListFooterComponent={() => (
           <TouchableOpacity
             style={styles.addButton}
@@ -55,11 +60,11 @@ export default function ChallengesSection() {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,           
+    flex: 1,
   },
   listContent: {
-    padding: 6,       
-    paddingBottom: 80, 
+    padding: 6,
+    paddingBottom: 80,
   },
   card: {
     flexDirection: 'row',
