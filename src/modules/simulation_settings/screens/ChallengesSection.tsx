@@ -18,11 +18,18 @@ export default function ChallengesSection() {
 
   const renderItem: RenderItem<Challenge> = useCallback(
     ({ item, drag, isActive }) => (
-      <ChallengeCard item={item} drag={drag} isActive={isActive} />
+      <ChallengeCard
+        item={item}
+        drag={drag}
+        isActive={isActive}
+        onDelete={() => {
+          useChallengeStore.getState().removeChallenge(item.id);
+        }}
+      />
     ),
     []
   );
-
+  
   return (
     <View style={styles.container}>
       <DraggableFlatList<Challenge>
