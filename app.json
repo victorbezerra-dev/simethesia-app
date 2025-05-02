@@ -3,6 +3,7 @@
     "name": "simethesia-app",
     "slug": "simethesia-app",
     "version": "1.0.0",
+    "icon": "./src/assets/images/simethesia-logo-with-background.png",
     "orientation": "portrait",
     "scheme": "simethesia-app",
     "userInterfaceStyle": "automatic",
@@ -21,9 +22,17 @@
     "web": {
       "bundler": "metro"
     },
-    "plugins": [],
+    "plugins": [
+      "expo-build-properties"
+    ],
     "experiments": {
       "typedRoutes": true
-    }
+    },
+    "extra": {
+      "eas": {
+        "projectId": "bbc0f275-d53b-465e-9547-4fd3aa7a0232"
+      }
+    },
+    "owner": "joaovictordev22"
   }
 }
