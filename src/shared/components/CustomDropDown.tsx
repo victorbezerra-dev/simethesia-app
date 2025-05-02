@@ -53,9 +53,7 @@ export const CustomDropdown = ({
   return (
     <FormFieldWrapper
       icon={icon}
-      label={label}
-      textContainerStyle={{ borderBottomWidth: 1, borderColor: '#BFC4C9' }}
-    >
+      label={label}>
       <TouchableOpacity
         style={styles.button}
         onPress={() => setOpen(prev => !prev)}
@@ -138,8 +136,8 @@ const styles = StyleSheet.create({
     fontWeight: '600',
   },
   dropdown: {
-    position: 'absolute', 
-    top: '100%',          
+    position: 'absolute',
+    top: '100%',
     left: 0,
     right: 0,
     zIndex: 10,
@@ -148,10 +146,10 @@ const styles = StyleSheet.create({
     borderColor: '#BFC4C9',
     borderRadius: 8,
     backgroundColor: '#fff',
-    maxHeight: 200,
+    maxHeight: 600,
     overflow: 'hidden',
     paddingVertical: 4,
-    elevation: 3, 
+    elevation: 3,
     shadowColor: '#000',
     shadowOffset: { width: 0, height: 2 },
     shadowOpacity: 0.1,
