@@ -1,5 +1,10 @@
 import React, { useRef, useState } from 'react';
-import { TextInput, TextStyle, StyleSheet, StyleProp } from 'react-native';
+import {
+  TextInput,
+  TextStyle,
+  StyleSheet,
+  StyleProp
+} from 'react-native';
 import { FormFieldWrapper } from './FormFieldWrapper';
 
 export const CustomTextInput = ({
@@ -11,8 +16,9 @@ export const CustomTextInput = ({
   keyboardType = 'default',
   unit,
   inputStyle,
-  placeholderTextColor, 
-  labelStyle
+  placeholderTextColor,
+  labelStyle,
+  errorMessage,
 }: {
   label: string;
   icon?: React.ReactNode;
@@ -23,7 +29,8 @@ export const CustomTextInput = ({
   unit?: string;
   inputStyle?: TextStyle;
   placeholderTextColor?: string;
-  labelStyle?:  StyleProp<TextStyle>;
+  labelStyle?: StyleProp<TextStyle>;
+  errorMessage?: string;
 }) => {
   const lastTextLength = useRef(0);
   const [cursorPos, setCursorPos] = useState<{ start: number; end: number }>();
@@ -37,11 +44,9 @@ export const CustomTextInput = ({
     lastTextLength.current = text.length;
 
     let numericPart = text;
-
     if (numericPart.endsWith(unitSuffix)) {
       numericPart = numericPart.slice(0, -unitSuffix.length);
     }
-
     numericPart = numericPart.replace(/[^0-9]/g, '');
 
     if (isDeleting && numericPart.length > 0) {
@@ -65,7 +70,7 @@ export const CustomTextInput = ({
   };
 
   return (
-    <FormFieldWrapper icon={icon} label={label} labelStyle={labelStyle}>
+    <FormFieldWrapper icon={icon} label={label} labelStyle={labelStyle} errorMessage={errorMessage}>
       <TextInput
         value={displayValue}
         onChangeText={handleChangeText}
@@ -73,7 +78,10 @@ export const CustomTextInput = ({
         placeholderTextColor={placeholderTextColor ?? '#999'}
         keyboardType={keyboardType}
         selection={forceCursor ? cursorPos : undefined}
-        style={[styles.input, inputStyle]}
+        style={[
+          styles.input,
+          inputStyle
+        ]}
         clearButtonMode="while-editing"
       />
     </FormFieldWrapper>
