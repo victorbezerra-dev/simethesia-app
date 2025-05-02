@@ -1,4 +1,5 @@
 import HomeScreen from '@/modules/home/screens/HomeScreen'
+import SimulationScreen from '@/modules/simulation/screens/SimulationScreen'
 import AddNewChallenge from '@/modules/simulation_settings/screens/AddNewChallenge'
 import SimulationSettingsHostScreen from '@/modules/simulation_settings/screens/SimulationSettingsHostScreen'
 import SplashScreen from '@/modules/splash_screen/screens/SplashScreen'
@@ -24,6 +25,7 @@ export default function RootNavigator() {
       <Stack.Screen name="Home" component={HomeScreen} options={{headerShown: false}} />
       <Stack.Screen name="SimulationSettings" component={SimulationSettingsHostScreen} />
       <Stack.Screen name="AddNewChallenge" component={AddNewChallenge} />
+      <Stack.Screen name="SimulationScreen" component={SimulationScreen} />
     </Stack.Navigator>
   )
 }
