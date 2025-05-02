@@ -14,6 +14,6 @@ export class Challenge {
   }
 
   get summary() {
-    return `${this.effect} for ${this.durationInSeconds}s`;
+    return `${this.effect.label} for ${this.durationInSeconds}s`;
   }
 }
