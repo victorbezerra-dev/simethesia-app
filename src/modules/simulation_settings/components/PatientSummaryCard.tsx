@@ -7,7 +7,8 @@ import { PatientData } from "@/shared/models/PatientData";
 type PatientSummaryCardProps = {
     totalSimulationTime: string;
     errorMessage: string | undefined;
-    patientData?: PatientData,
+    patientData?: PatientData | null,
+    countChallenges: number,
     onChangeTotalSimulationTime: (value: string) => void;
 };
 
@@ -16,6 +17,7 @@ const PatientSummaryCard = ({
     totalSimulationTime,
     errorMessage = undefined,
     patientData,
+    countChallenges,
     onChangeTotalSimulationTime
 }: PatientSummaryCardProps) => {
     return (
@@ -25,7 +27,7 @@ const PatientSummaryCard = ({
                 {patientData?.heightInMeters}m, {patientData?.weightInKg}kg, {patientData?.gender}
             </Text>
             <Text style={styles.label}>
-                <Text style={styles.bold}>Desafios:</Text> 3 ativos
+                <Text style={styles.bold}>Desafios:</Text> {countChallenges} ativo(s)
             </Text>
 
             <CustomTextInput

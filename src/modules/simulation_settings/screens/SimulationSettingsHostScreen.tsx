@@ -32,7 +32,7 @@ export default function SimulationSettingsHostScreen() {
   const [simulationTimeError, setSimulationTimeError] = useState('');
 
   const [settingsData, setSettingsData] = useState<{
-    gender: Gender | null;
+    gender: Gender;
     age: string;
     weight: string;
     height: string;
@@ -117,8 +117,12 @@ export default function SimulationSettingsHostScreen() {
   };
 
   function getPatientData() {
+    if (!settingsData) {
+      return null;
+    }
+  
     return {
-      gender: settingsData!.gender!,
+      gender: settingsData!.gender,
       ageInYears: parseInt(settingsData!.age, 10),
       weightInKg: parseFloat(settingsData!.weight),
       heightInMeters: parseFloat(settingsData!.height) / 100.0,
@@ -148,7 +152,7 @@ export default function SimulationSettingsHostScreen() {
       }));
 
       dispatch(setSimulationSession({
-        patient: getPatientData(),
+        patient: getPatientData()!,
         challenges: challengesSerialized,
         totalSimulationTime: parseFloat(totalSimulationTime),
       }));
@@ -214,6 +218,7 @@ export default function SimulationSettingsHostScreen() {
             totalSimulationTime={totalSimulationTime}
             errorMessage={simulationTimeError}
             patientData={getPatientData()}
+            countChallenges={challenges.length}
             onChangeTotalSimulationTime={setTotalSimulationTime}
           />
         }
