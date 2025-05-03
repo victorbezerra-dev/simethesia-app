@@ -152,10 +152,23 @@ Feel free to contribute and help us improve Simethesia:
 
 ## 📧 Contact
 
-Questions or suggestions? Get in touch with:
+Questions, suggestions, or academic inquiries? Feel free to reach out to the authors:
 
-- **João Victor Bezerra da Silva**  
+- **João Victor Bezerra da Silva** — [joaovictorbezerra.dev@gmail.com](mailto:joaovictorbezerra.dev@gmail.com)  
+  Instituto Federal de Rondônia (IFRO)  
   [LinkedIn](https://www.linkedin.com/in/joaovictorbezerra-dev)
+
+- **Daniele da Silva Santos** — [danieleesantos0908@gmail.com](mailto:danieleesantos0908@gmail.com)  
+  Instituto Federal de Rondônia (IFRO)
+
+- **Jonathan Silva Nascimento** — [jonathansanches359@gmail.com](mailto:jonathansanches359@gmail.com)  
+  Instituto Federal de Rondônia (IFRO)
+
+- **Rafael Pissinati de Souza** — [rafael.pissinati@ifro.edu.br](mailto:rafael.pissinati@ifro.edu.br)  
+  Instituto Federal de Rondônia (IFRO)
+
+- **José Diogo Forte de Oliveira Luna** — [jose.luna@ifro.edu.br](mailto:jose.luna@ifro.edu.br)  
+  Instituto Federal de Rondônia (IFRO)
 
 
 
