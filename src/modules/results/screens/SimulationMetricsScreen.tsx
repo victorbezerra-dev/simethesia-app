@@ -6,12 +6,13 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useSimulationMetricsStore } from '../stores/useSimulationMetricsStore';
 import { useCallback, useEffect } from 'react';
 import { resetSimulation } from '@/shared/stores/simulationSlice';
+import { exportSimulationToDownloads } from '../services/ExportSimulationResultService';
 
 export default function SimulationMetricsScreen() {
     const navigation = useNavigation();
     const session = useSelector((state: RootState) => state.simulation.session);
     const dispatch = useDispatch();
-    const { iae, ise, tcv, calculateMetricsFromSamples, resetMetrics} = useSimulationMetricsStore(state => state);
+    const { iae, ise, tcv, calculateMetricsFromSamples, resetMetrics } = useSimulationMetricsStore(state => state);
 
     useEffect(() => {
         if (session?.result?.samples) {
@@ -21,18 +22,18 @@ export default function SimulationMetricsScreen() {
 
     useFocusEffect(
         useCallback(() => {
-          return () => {
-            resetMetrics();
-            dispatch(resetSimulation());
-          };
+            return () => {
+                resetMetrics();
+                dispatch(resetSimulation());
+            };
         }, [dispatch])
-      );
+    );
 
     return (
         <View className="flex-1 items-center justify-start bg-[#0b1625] px-2">
             <View className="w-full max-w-md bg-[#0b1625] rounded-2xl p-4 space-y-4">
                 <View className="relative">
-                    <TouchableOpacity className="absolute right-0 z-10" onPress={navigation.goBack }>
+                    <TouchableOpacity className="absolute right-0 z-10" onPress={navigation.goBack}>
                         <MaterialCommunityIcons name="close" size={24} color="#fff" />
                     </TouchableOpacity>
 
@@ -70,6 +71,16 @@ export default function SimulationMetricsScreen() {
                             ))}
                         </View>
                     </View>
+                    <TouchableOpacity
+                        onPress={() => {
+                            if (session?.result?.samples) {
+                                exportSimulationToDownloads(session?.result?.samples)
+                            }
+                        }}
+                        className="mt-6 bg-[#3E6DFF] py-3 px-6 rounded-xl self-center"
+                    >
+                        <Text className="text-white text-sm font-semibold">Exportar Resultado</Text>
+                    </TouchableOpacity>
                 </View>
 
             </View>
