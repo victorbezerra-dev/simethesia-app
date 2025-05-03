@@ -67,7 +67,7 @@ export default function SimulationSettingsHostScreen() {
       setShowDialog(false);
       setIsLoading(false);
       if (!hasInitialized.current) {
-        clearAllChallenges(); 
+        clearAllChallenges();
         hasInitialized.current = true;
       }
     }, [])
@@ -79,8 +79,12 @@ export default function SimulationSettingsHostScreen() {
       return;
     }
     const parsed = parseFloat(totalSimulationTime);
+    const totalChallengeTime = getTotalChallengesDuration();
+
     if (!totalSimulationTime || isNaN(parsed) || parsed <= 0) {
       setSimulationTimeError('Informe um tempo válido');
+    } else if (parsed < totalChallengeTime) {
+      setSimulationTimeError(`O tempo total da simulação deve ser maior ou igual a ${totalChallengeTime} segundos.`);
     } else {
       setSimulationTimeError('');
     }
@@ -105,6 +109,9 @@ export default function SimulationSettingsHostScreen() {
     return false;
   }
 
+  function getTotalChallengesDuration(): number {
+    return challenges.reduce((total, challenge) => total + challenge.durationInSeconds, 0);
+  }
 
   function validateSimulationTime(): boolean {
     const parsed = parseFloat(totalSimulationTime);
@@ -126,7 +133,7 @@ export default function SimulationSettingsHostScreen() {
     if (!settingsData) {
       return null;
     }
-  
+
     return {
       gender: settingsData!.gender,
       ageInYears: parseInt(settingsData!.age, 10),
@@ -187,7 +194,7 @@ export default function SimulationSettingsHostScreen() {
           pagingEnabled
           showsHorizontalScrollIndicator={false}
           onMomentumScrollBegin={() =>
-              Keyboard.dismiss()
+            Keyboard.dismiss()
           }
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { x: scrollX } } }],
