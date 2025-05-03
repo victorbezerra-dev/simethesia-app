@@ -77,10 +77,8 @@ TIMESTAMP,BIS,PROPORFOL;
     - Compartilhamento de estado global entre muitos módulos
     - Middleware para efeitos colaterais complexos
     - Debugging avançado com devtools
-
-> ❗ **No entanto**, no contexto do Simethesia, com escopo modular e estados locais bem definidos, o **Zustand seria o suficiente para toda a aplicação**. Sua simplicidade, performance e integração direta com hooks tornam o código mais limpo e eficiente.
-
-> A coexistência dos dois no projeto serve apenas como **exercício técnico comparativo**. Em produção, a recomendação seria focar em **Zustand** para este tipo de aplicação.
+    -❗ **No entanto**, no contexto do Simethesia, com escopo modular e estados locais bem definidos, o **Zustand seria o suficiente para toda a aplicação**. Sua simplicidade, performance e integração direta com hooks tornam o código mais limpo e eficiente.
+    - A coexistência dos dois no projeto serve apenas como **exercício técnico comparativo**. Em produção, a recomendação seria focar em **Zustand** para este tipo de aplicação.
 ---
 
 ## 📱 Download do APK
