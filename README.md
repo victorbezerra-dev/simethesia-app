@@ -82,7 +82,8 @@ TIMESTAMP,BIS,PROPORFOL;
 
 Baixe a versão mais recente para Android:
 
-👉 [**Download Simethesia APK**](https://example.com/simethesia.apk) <!-- Substitua pelo link real -->
+👉 [**Download Simethesia APK**]
+
 
 ---
 
