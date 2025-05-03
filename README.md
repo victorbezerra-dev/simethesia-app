@@ -90,7 +90,7 @@ The coexistence of both libraries in this project serves as a **technical case s
 
 Download the latest version for Android:
 
-👉 [**Download Simethesia APK**]
+👉 [[**Download Simethesia APK**]](https://github.com/victorbezerra-dev/simethesia-app/releases/download/v1.0.0/application-706df6cf-2166-4653-8ee7-fa257e7a7707.apk)
 
 
 ---
