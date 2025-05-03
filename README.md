@@ -1,6 +1,11 @@
 # 🧠 Simethesia
 
 Simethesia é um simulador educacional de anestesia que permite treinar e visualizar efeitos clínicos em tempo real. Projetado para ambientes acadêmicos, o app simula a administração de agentes anestésicos em um paciente virtual, com controle baseado em modelos farmacocinéticos/dinâmicos (PK/PD), interações realistas e monitoramento contínuo de métricas como BIS e dose aplicada.
+
+## 🖼️ Imagens do App
+
+![image](https://github.com/user-attachments/assets/afdf00ae-ea5c-4cc5-a9a5-6d260ba3519a)
+
 ## 🎯 O que você pode fazer com o Simethesia App
 
 O **Simethesia App** é uma ferramenta educacional interativa que permite aos alunos vivenciarem o controle anestésico de forma prática e realista. Com ele, você pode:
@@ -92,12 +97,6 @@ Baixe a versão mais recente para Android:
 Assista a uma demonstração completa do aplicativo:
 
 [![Assista no YouTube](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
-
----
-
-## 🖼️ Imagens do App
-
-![image](https://github.com/user-attachments/assets/afdf00ae-ea5c-4cc5-a9a5-6d260ba3519a)
 
 ---
 
