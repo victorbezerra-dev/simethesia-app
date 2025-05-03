@@ -61,45 +61,49 @@ TIMESTAMP,BIS,PROPORFOL;
 0.1870,95.64,29.91;
 ```
 
-### > ⚙️ Desenvolvido com:
->   - **React Native 0.76.5** com **Expo SDK 52**
->   - **Redux Toolkit** e **Zustand** para gerenciamento de estado
->   - **Bluetooth Serial** com `react-native-bluetooth-classic`
->   - **Skia** (Shopify) para gráficos de alto desempenho
->   - **Lottie** para animações responsivas
->   - **Victory Native** para visualização de dados clínicos
->   - **Tailwind CSS com NativeWind** para estilização produtiva
->   - **Rive** para UI interativa
->   - **react-native-fs** e **expo-sharing** para salvar/compartilhar simulações
->   - **Jest + Jest-Expo** para testes automatizados
+### ⚙️ Built With:
+- **React Native 0.76.5** with **Expo SDK 52**
+- **Redux Toolkit** and **Zustand** for state management
+- **Bluetooth Serial** using `react-native-bluetooth-classic`
+- **Skia** (Shopify) for high-performance graphics
+- **Lottie** for responsive animations
+- **Victory Native** for clinical data visualization
+- **Tailwind CSS with NativeWind** for productive styling
+- **Rive** for interactive UI animations
+- **react-native-fs** and **expo-sharing** for saving and sharing simulations
+- **Jest + Jest-Expo** for automated testing
 
-> - **Redux Toolkit** é amplamente adotado quando há necessidade de:
-      - Compartilhamento de estado global entre muitos módulos
-      - Middleware para efeitos colaterais complexos
-      - Debugging avançado com devtools
->  -❗ **No entanto**, no contexto do Simethesia, com escopo modular e estados locais bem definidos, o **Zustand seria o suficiente para toda a aplicação**. Sua simplicidade, performance e integração direta com hooks tornam o código mais limpo e eficiente.
-    - A coexistência dos dois no projeto serve apenas como **exercício técnico comparativo**. Em produção, a recomendação seria focar em **Zustand** para este tipo de aplicação.
+#### ⚖️ Why Redux and Zustand?
+
+- **Redux Toolkit** is widely used when you need:
+  - Global state sharing across many modules
+  - Middleware for handling complex side effects
+  - Advanced debugging tools like Redux DevTools
+
+❗ **However**, in the context of Simethesia, with a modular scope and well-isolated local states, **Zustand alone would be sufficient**. Its simplicity, performance, and direct hook-based integration make the code cleaner and more efficient.
+
+The coexistence of both libraries in this project serves as a **technical case study**. In a production environment, we recommend using **Zustand only** for this type of application.
+
 ---
 
-## 📱 Download do APK
+## 📱 Download the APK
 
-Baixe a versão mais recente para Android:
+Download the latest version for Android:
 
 👉 [**Download Simethesia APK**]
 
 
 ---
 
-## 🎥 Vídeo Demonstrativo
+## 🎥 Demo Video
 
-Assista a uma demonstração completa do aplicativo:
+Watch a full demonstration of the app:
 
 [![Assista no YouTube](https://img.youtube.com/vi/VIDEO_ID/0.jpg)](https://www.youtube.com/watch?v=VIDEO_ID)
 
 ---
 
-## 🚀 Como Rodar Localmente
-
+## 🚀 How to Run Locally
    ```bash
     1. Clone e instale as dependencias do projeto
         git clone https://github.com/seu-usuario/simethesia-app.git
@@ -111,19 +115,19 @@ Assista a uma demonstração completa do aplicativo:
         Emulador Android/iOS
    ```
 
-## 📡 Conexão Bluetooth (Importante!)
+## 📡 Bluetooth Connection (Important!)
 
-Atualmente, o **Simethesia app conecta automaticamente ao primeiro dispositivo Bluetooth pareado** encontrado.
+Currently, the **Simethesia app automatically connects to the first paired Bluetooth device** it finds.
 
-⚠️ **Recomendação:**  
-Certifique-se de que **apenas o celular e o seu computador (desktop)** estejam pareados no momento da conexão. Isso evita que o app se conecte a dispositivos indesejados.
+⚠️ **Recommendation:**  
+Make sure that **only your smartphone and your computer (desktop)** are paired at the time of connection. This prevents the app from connecting to unintended devices.
 
-✅ **Melhoria futura planejada:**  
-Estamos desenvolvendo uma interface para **seleção manual do dispositivo Bluetooth**, tornando o processo mais amigável, confiável e intuitivo.
+✅ **Planned Future Improvement:**  
+We are working on a user-friendly interface that will allow **manual Bluetooth device selection**, making the process more reliable and intuitive.
 
-## 📂 Estrutura Modular
+## 📂 Modular Structure
 
-O app segue uma estrutura modular por feature:
+The app follows a feature-based modular architecture:
 
 ```
 modules/
@@ -135,19 +139,24 @@ modules/
 └─ shared/
 ```
 
-## 🤝 Contributions are welcome! Help us grow by:
-- Sinta-se à vontade para contribuir! Abra uma issue ou envie um PR com melhorias.
-- Reporting issues or suggesting new features
-- Creating new patient profiles or clinical scenarios
-- Improving documentation or enhancing the simulation code
+## 🤝 Contributions Are Welcome!
 
+Feel free to contribute and help us improve Simethesia:
 
-## 📧 Contato
-Dúvidas ou sugestões? Entre em contato com:
+- Open issues or submit a pull request with improvements
+- Report bugs or suggest new features
+- Create new patient profiles or clinical challenge scenarios
+- Improve documentation or enhance the simulation code
 
-- João Victor Bezerra da Silva
+---
 
-    - [Linkedin](www.linkedin.com/in/joaovictorbezerra-dev)
+## 📧 Contact
+
+Questions or suggestions? Get in touch with:
+
+- **João Victor Bezerra da Silva**  
+  [LinkedIn](https://www.linkedin.com/in/joaovictorbezerra-dev)
+
 
 
 
