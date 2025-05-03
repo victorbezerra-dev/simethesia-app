@@ -1,53 +1,53 @@
 # 🧠 Simethesia
 
-Simethesia é um simulador educacional de anestesia que permite treinar e visualizar efeitos clínicos em tempo real. Projetado para ambientes acadêmicos, o app simula a administração de agentes anestésicos em um paciente virtual, com controle baseado em modelos farmacocinéticos/dinâmicos (PK/PD), interações realistas e monitoramento contínuo de métricas como BIS e dose aplicada.
+Simethesia is an educational anesthesia simulator that allows users to train and visualize clinical effects in real time. Designed for academic environments, the app simulates the administration of anesthetic agents to a virtual patient, using control models based on pharmacokinetics/pharmacodynamics (PK/PD), realistic interactions, and continuous monitoring of key metrics such as BIS and drug dosage.
 
-## 🖼️ Imagens do App
+## 🖼️ App Images
 
 ![image](https://github.com/user-attachments/assets/afdf00ae-ea5c-4cc5-a9a5-6d260ba3519a)
 
-## 🎯 O que você pode fazer com o Simethesia App
+## 🎯 What You Can Do with the Simethesia App
 
-O **Simethesia App** é uma ferramenta educacional interativa que permite aos alunos vivenciarem o controle anestésico de forma prática e realista. Com ele, você pode:
+The **Simethesia App** is an interactive educational tool that allows students to experience anesthesia control in a practical and realistic way. With it, you can:
 
-### 👩‍⚕️ Personalizar o Paciente
+### 👩‍⚕️ Customize the Patient
 
-- Selecionar as características do paciente: **sexo**, **idade**, **peso** e **altura**.
-- Escolher o **tempo total da simulação**, adaptando à duração da aula ou do experimento.
+- Select patient characteristics: **gender**, **age**, **weight**, and **height**
+- Set the **total simulation time**, adapting it to the duration of the class or experiment
 
-### 🧪 Definir Desafios Clínicos
+### 🧪 Set Clinical Challenges
 
-- Ativar eventos como **hemorragia**, **vasodilatação** ou uso de drogas vasoativas, que impactam a dinâmica da simulação.
-- Cada desafio afeta parâmetros clínicos em tempo real, exigindo adaptação da estratégia de controle.
+- Activate events such as **hemorrhage**, **vasodilation**, or **vasoactive drug use**, which dynamically affect the simulation
+- Each challenge alters clinical parameters in real time, requiring adaptation of the control strategy
 
-### 🎛️ Controlar em Tempo Real com Arduino
+### 🎛️ Control in Real Time with Arduino
 
-- Iniciar a simulação no **Arduino**, que atua como um "paciente virtual" respondendo aos comandos do app via **Bluetooth**.
-- Visualizar a simulação em tempo real enquanto os dados são atualizados dinamicamente no app.
+- Start the simulation on an **Arduino**, which acts as a "virtual patient" responding to commands from the app via **Bluetooth**
+- Monitor the simulation in real time as data is dynamically updated in the app
 
-### 📊 Acompanhar Gráficos e Métricas Durante a Simulação
+### 📊 Track Graphs and Metrics During Simulation
 
-- Visualizar gráficos sincronizados como:
-  - **BIS (índice de consciência) x Tempo**
-  - **Propofol administrado x Tempo**
-- Ver o **desafio ativo no momento** e acompanhar outras métricas essenciais do comportamento do paciente.
+- View synchronized graphs such as:
+  - **BIS (consciousness index) vs Time**
+  - **Administered Propofol vs Time**
+- See the **currently active challenge** and track other key patient behavior metrics
 
-### ✅ Avaliar Resultados com Métricas Automáticas
+### ✅ Evaluate Results with Automatic Metrics
 
-Ao final de cada simulação, o aplicativo calcula automaticamente:
+At the end of each simulation, the app automatically calculates:
 
-- **IAE** – Integral do Erro Absoluto
-- **ISE** – Integral do Erro ao Quadrado
-- **TCV** – Tempo de Controle Válido
+- **IAE** – Integral of Absolute Error  
+- **ISE** – Integral of Squared Error  
+- **TCV** – Valid Control Time
 
-Essas métricas ajudam o aluno a compreender a qualidade do controle e os efeitos clínicos com base nos dados simulados, de forma didática e objetiva.
+These metrics help students understand the quality of the control strategy and the clinical effects based on the simulated data, in a clear and educational way.
 
-### 📤 Exportar Dados para Análise Avançada
+### 📤 Export Data for Advanced Analysis
 
-Na tela de resultados, é possível:
+On the results screen, it is possible to:
 
-- Exportar todos os dados da simulação em um arquivo **.csv (Excel)**.
-- O formato é estruturado como:
+- Export all simulation data into a **.csv (Excel)** file
+- The format is structured as:
 
 ```
 TIMESTAMP,BIS,PROPORFOL;
