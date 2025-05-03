@@ -180,6 +180,9 @@ export default function SimulationSettingsHostScreen() {
           horizontal
           pagingEnabled
           showsHorizontalScrollIndicator={false}
+          onMomentumScrollBegin={() =>
+              Keyboard.dismiss()
+          }
           onScroll={Animated.event(
             [{ nativeEvent: { contentOffset: { x: scrollX } } }],
             { useNativeDriver: false }
