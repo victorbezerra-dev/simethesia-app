@@ -24,7 +24,7 @@ export default function AboutScreen() {
                     name: 'João Victor Bezerra da Silva',
                     email: 'joaovictorbezerra.dev@gmail.com',
                     isDeveloper: true,
-                    linkedin: 'www.linkedin.com/in/joaovictorbezerra-dev',
+                    linkedin: 'https://www.linkedin.com/in/joaovictorbezerra-dev/',
                 },
                 {
                     name: 'Daniele da Silva Santos',
@@ -55,7 +55,7 @@ export default function AboutScreen() {
                         <TouchableOpacity onPress={() => Linking.openURL(author.linkedin)}>
                             <View className='flex-row'>
                                 <Text className="text-white/80 text-sm">LinkedIn:{' '}</Text>
-                                <Text className="text-white/80 text-sm underline">{author.linkedin}</Text>
+                                <Text className="text-white/80 text-sm underline">{author.linkedin.replace('https://', '')}</Text>
                             </View>
                         </TouchableOpacity>
                     )}
