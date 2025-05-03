@@ -76,8 +76,8 @@ export default function PatientDataFormSection({ onDataChange }: Props) {
       <CustomTextInput
         label="Altura"
         value={height}
-        unit="m"
-        placeholder="Ex: 1.52 m"
+        unit="cm"
+        placeholder="Ex: 152 cm"
         onChange={setHeight}
         keyboardType="numeric"
         icon={
