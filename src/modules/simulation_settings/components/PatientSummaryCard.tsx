@@ -2,23 +2,27 @@ import React, { useState } from "react";
 import { View, Text, StyleSheet } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import CustomTextInput from "@/shared/components/CustomTextInput";
+import { PatientData } from "@/shared/models/PatientData";
 
 type PatientSummaryCardProps = {
     totalSimulationTime: string;
     errorMessage: string | undefined;
+    patientData?: PatientData,
     onChangeTotalSimulationTime: (value: string) => void;
 };
 
 
 const PatientSummaryCard = ({
-  totalSimulationTime,
-  errorMessage=undefined,
-  onChangeTotalSimulationTime
+    totalSimulationTime,
+    errorMessage = undefined,
+    patientData,
+    onChangeTotalSimulationTime
 }: PatientSummaryCardProps) => {
     return (
         <View style={styles.card}>
             <Text style={styles.label}>
-                <Text style={styles.bold}>Paciente:</Text> 30 anos, 1.58m, 75kg, Masculino
+                <Text style={styles.bold}>Paciente:</Text> {patientData?.ageInYears} anos, 
+                {patientData?.heightInMeters}m, {patientData?.weightInKg}kg, {patientData?.gender}
             </Text>
             <Text style={styles.label}>
                 <Text style={styles.bold}>Desafios:</Text> 3 ativos

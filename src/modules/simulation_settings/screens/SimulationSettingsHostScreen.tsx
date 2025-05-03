@@ -20,7 +20,7 @@ import { Gender } from '@/shared/models/PatientData';
 import { useChallengeStore } from '../stores/useChallengeStore';
 import PatientSummaryCard from '../components/PatientSummaryCard';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import bluetoothService from '@/shared/services/BluetoothService';
+import bluetoothService from '@/shared/services/MockBluetoothService';
 import { requestBlePermissions } from '@/shared/services/BluetoothPermissions';
 import CustomPrimaryButton from '../../../shared/components/CustomPrimaryButton';
 
@@ -42,6 +42,7 @@ export default function SimulationSettingsHostScreen() {
   const [totalSimulationTime, setTotalSimulationTime] = useState('');
   const [keyboardVisible, setKeyboardVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const hasInteracted = useRef(false);
 
   const challenges = useChallengeStore(state => state.challenges);
   const dispatch = useDispatch();
@@ -65,6 +66,19 @@ export default function SimulationSettingsHostScreen() {
       setIsLoading(false);
     }, [])
   );
+
+  useEffect(() => {
+    if (!hasInteracted.current) {
+      hasInteracted.current = true;
+      return;
+    }
+    const parsed = parseFloat(totalSimulationTime);
+    if (!totalSimulationTime || isNaN(parsed) || parsed <= 0) {
+      setSimulationTimeError('Informe um tempo válido');
+    } else {
+      setSimulationTimeError('');
+    }
+  }, [totalSimulationTime]);
 
   function validateSettingsData(data: typeof settingsData): boolean {
     if (!data) {
@@ -102,6 +116,15 @@ export default function SimulationSettingsHostScreen() {
     scrollRef.current?.scrollTo({ x: index * width, animated: true });
   };
 
+  function getPatientData() {
+    return {
+      gender: settingsData!.gender!,
+      ageInYears: parseInt(settingsData!.age, 10),
+      weightInKg: parseFloat(settingsData!.weight),
+      heightInMeters: parseFloat(settingsData!.height) / 100.0,
+    };
+  }
+
   const handleStartSimulation = async () => {
     try {
       setIsLoading(true);
@@ -125,12 +148,7 @@ export default function SimulationSettingsHostScreen() {
       }));
 
       dispatch(setSimulationSession({
-        patient: {
-          gender: settingsData!.gender!,
-          ageInYears: parseInt(settingsData!.age, 10),
-          weightInKg: parseFloat(settingsData!.weight),
-          heightInMeters: parseFloat(settingsData!.height),
-        },
+        patient: getPatientData(),
         challenges: challengesSerialized,
         totalSimulationTime: parseFloat(totalSimulationTime),
       }));
@@ -184,6 +202,8 @@ export default function SimulationSettingsHostScreen() {
       <CustomDialog
         visible={showDialog}
         onClose={() => {
+          setSimulationTimeError('');
+          hasInteracted.current = false;
           setShowDialog(false);
           setIsLoading(false);
         }}
@@ -193,6 +213,7 @@ export default function SimulationSettingsHostScreen() {
           <PatientSummaryCard
             totalSimulationTime={totalSimulationTime}
             errorMessage={simulationTimeError}
+            patientData={getPatientData()}
             onChangeTotalSimulationTime={setTotalSimulationTime}
           />
         }
