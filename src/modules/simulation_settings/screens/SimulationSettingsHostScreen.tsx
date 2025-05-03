@@ -43,8 +43,10 @@ export default function SimulationSettingsHostScreen() {
   const [keyboardVisible, setKeyboardVisible] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const hasInteracted = useRef(false);
+  const hasInitialized = useRef(false);
 
   const challenges = useChallengeStore(state => state.challenges);
+  const clearAllChallenges = useChallengeStore(state => state.clearChallenges);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -64,6 +66,10 @@ export default function SimulationSettingsHostScreen() {
     useCallback(() => {
       setShowDialog(false);
       setIsLoading(false);
+      if (!hasInitialized.current) {
+        clearAllChallenges(); 
+        hasInitialized.current = true;
+      }
     }, [])
   );
 
