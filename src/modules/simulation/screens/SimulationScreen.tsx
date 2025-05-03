@@ -10,7 +10,7 @@ import Animated, {
 } from 'react-native-reanimated';
 import { Circle } from '@shopify/react-native-skia';
 import { CartesianChart, Line, useChartPressState } from 'victory-native';
-import bluetoothService from '@/shared/services/MockBluetoothService';
+import bluetoothService from '@/shared/services/BluetoothService';
 import { setSimulationResult } from '@/shared/stores/simulationSlice';
 import { RootState } from '@/shared/stores/stores';
 import { SimulationSample } from '@/shared/models/SimulationSample';

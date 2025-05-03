@@ -20,7 +20,7 @@ import { Gender } from '@/shared/models/PatientData';
 import { useChallengeStore } from '../stores/useChallengeStore';
 import PatientSummaryCard from '../components/PatientSummaryCard';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import bluetoothService from '@/shared/services/MockBluetoothService';
+import bluetoothService from '@/shared/services/BluetoothService';
 import { requestBlePermissions } from '@/shared/services/BluetoothPermissions';
 import CustomPrimaryButton from '../../../shared/components/CustomPrimaryButton';
 
