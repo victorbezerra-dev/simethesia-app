@@ -103,6 +103,17 @@ Watch a full demonstration of the app:
 
 ---
 
+## 🛠️ Requirements
+
+To run the simulation with hardware integration, you’ll need to configure:
+
+- The **communication bridge** (`bluetooth_serial_bridge.py`)
+- The **simulator that runs on the Arduino**(`simethesia-simulator.ino`)
+
+Both components are available in the following repository:
+
+👉 [simethesia-simulator](https://github.com/victorbezerra-dev/simethesia-simulator)
+
 ## 🚀 How to Run Locally
    ```bash
     1. Clone e instale as dependencias do projeto
